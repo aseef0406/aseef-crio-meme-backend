@@ -55,7 +55,9 @@ public class MemeServices {
 //		System.out.println(allmemes.get(allmemes.size()-1).id);
 //		System.out.println(allmemes.size());
 //		System.out.println(allmemes.size()-100);
-		return allmemes.subList(0, 100);
+		if(allmemes.size()>100)
+			return allmemes.subList(0, 100);
+		return allmemes;
 			
 	}
 	
