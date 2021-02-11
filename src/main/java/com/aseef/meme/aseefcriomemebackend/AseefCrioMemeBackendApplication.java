@@ -13,16 +13,16 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
-//@Controller
+@Controller
 @SpringBootApplication
 @EnableSwagger2
 public class AseefCrioMemeBackendApplication {
 
-//	@RequestMapping("/")
-//    @ResponseBody
-//    String home() {
-//      return "Hello World!";
-//    }
+	@RequestMapping("/")
+    @ResponseBody
+    String home() {
+      return "Hello World!";
+    }
 	@Value("${server.port}")
     private int serverPort;
 
