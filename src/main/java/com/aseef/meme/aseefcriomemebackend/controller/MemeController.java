@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,7 +42,7 @@ public class MemeController {
 			return myservice.getMeme(id);
 		return null;
 	}
-	@CrossOrigin
+	@CrossOrigin(origins = "*", maxAge = 3600)
 	@RequestMapping(method=RequestMethod.POST , value="/memes")
 	@ResponseBody
 	@ApiOperation("Adding a Meme in Database and Return respective id of Meme")
@@ -67,4 +69,13 @@ public class MemeController {
 	public long getLatestId() {
 		return myservice.getLatestid();
 	}
+	
+	@CrossOrigin(origins = "*", maxAge = 3600)
+	@RequestMapping(
+            value = "/**",
+            method = RequestMethod.OPTIONS
+    )
+    public ResponseEntity handle() {
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }
