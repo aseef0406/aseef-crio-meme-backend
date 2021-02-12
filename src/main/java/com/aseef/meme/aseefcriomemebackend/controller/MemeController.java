@@ -20,20 +20,21 @@ import com.aseef.meme.aseefcriomemebackend.services.MemeServices;
 
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 //@RequestMapping(value="/api")
 public class MemeController {
 	
 	@Autowired
 	MemeServices myservice ;
-	@CrossOrigin
+	//@CrossOrigin
 	@GetMapping("/memes")
 	@ApiOperation("Return Latest 100 Memes Data in JSON Format")
 	public List<Meme> getMeme() {
 		
 		return myservice.findAllMemes();
 	}
-	@CrossOrigin
+	//@CrossOrigin
 	@GetMapping("/memes/{id}")
 	@ApiOperation("Return Meme with given id in JSON Format")
 	public Meme getMeme(@PathVariable long id) {
@@ -42,7 +43,7 @@ public class MemeController {
 			return myservice.getMeme(id);
 		return null;
 	}
-	@CrossOrigin(origins = "*", maxAge = 3600)
+	
 	@RequestMapping(method=RequestMethod.POST , value="/memes")
 	@ResponseBody
 	@ApiOperation("Adding a Meme in Database and Return respective id of Meme")
@@ -53,7 +54,7 @@ public class MemeController {
 		map.put("id", String.valueOf(id));
 		return map;
 	}
-	@CrossOrigin
+	//@CrossOrigin
 	@RequestMapping(method=RequestMethod.PATCH, value="/memes/{id}")
 	@ResponseBody
 	@ApiOperation("Updating a Meme in Database and Return respective id of Meme")
@@ -63,7 +64,7 @@ public class MemeController {
 		return id;
 		
 	}
-	@CrossOrigin
+	//@CrossOrigin
 	@GetMapping("/getlatestid")
 	@ApiOperation("Returns the latest id of Meme")
 	public long getLatestId() {
