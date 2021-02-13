@@ -71,7 +71,7 @@ public class MemeController {
 		return myservice.getLatestid();
 	}
 	
-	@CrossOrigin(origins = "*", maxAge = 3600)
+	
 	@RequestMapping(
             value = "/**",
             method = RequestMethod.OPTIONS
